@@ -1,4 +1,4 @@
-package net.mildtoucan.tutorialmod.items;
+package net.mildtoucan.tutorialmod.item;
 
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.mildtoucan.tutorialmod.TutorialMod;
