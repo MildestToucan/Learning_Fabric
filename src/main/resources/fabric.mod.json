@@ -9,7 +9,7 @@
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"sources": "https://github.com/MildestToucan/Learning_Fabric"
 	},
 	"license": "MIT",
 	"icon": "assets/tutorialmod/icon.png",
