@@ -36,6 +36,15 @@ public class ModItemGroups {
                         entries.add(ModBlocks.PINK_GARNET_DEEPSLATE_ORE);
                     }).build());
 
+    public static final ItemGroup PINK_GARNET_TOOLS_GROUP = Registry.register(Registries.ITEM_GROUP,
+            Identifier.of(TutorialMod.MOD_ID, "pink_garnet_tools"),
+            FabricItemGroup.builder()
+                    .displayName(Text.translatable("itemgroup.tutorialmod.pink_garnet_tools"))
+                    .icon(() -> new ItemStack(ModItems.CHISEL))
+                    .entries((displayContext, entries) -> {
+                        entries.add(ModItems.CHISEL);
+                    }).build());
+
 
 
 
