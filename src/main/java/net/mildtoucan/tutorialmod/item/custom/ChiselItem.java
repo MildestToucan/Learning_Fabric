@@ -48,6 +48,6 @@ public class ChiselItem extends Item {
         }
 
 
-        return ActionResult.SUCCESS; //Tells the game the action went through as expected.
+        return ActionResult.SUCCESS; //Tells the game the action went through as expected. Makes the player do a right click animation
     }
 }
