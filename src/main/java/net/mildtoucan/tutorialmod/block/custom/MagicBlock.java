@@ -1,6 +1,6 @@
 package net.mildtoucan.tutorialmod.block.custom;
 
-import net.mildtoucan.tutorialmod.item.ModItems;
+import net.mildtoucan.tutorialmod.util.ModTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
@@ -36,21 +36,28 @@ public class MagicBlock extends Block {
     @Override
     public void onSteppedOn(World world, BlockPos pos, BlockState state, Entity entity) {
         if(entity instanceof ItemEntity itemEntity) {
-            if(itemEntity.getStack().getItem() == ModItems.RAW_PINK_GARNET) {
+            if(isValidItem(itemEntity.getStack())) {
+                /*By checking through the IsValidItem Method,
+                 it'll be able to transform *any* item in the tag to a diamond.*/
                 itemEntity.setStack(new ItemStack(Items.DIAMOND, itemEntity.getStack().getCount()));
             }
         }
         super.onSteppedOn(world, pos, state, entity);
     }
 
+    private boolean isValidItem(ItemStack stack) {
+        return stack.isIn(ModTags.Items.TRANSFORMABLE_ITEMS); /*This Method returns a "true" boolean if
+        the item checked is in the tag. */
+    }
+
     @Override
     public void appendTooltip(ItemStack stack, Item.TooltipContext context, List<Text> tooltip, TooltipType options) {
         tooltip.add(Text.translatable("tooltip.tutorialmod.magic_block_tooltip")); //This will add one line to the tooltip
         tooltip.add(Text.translatable("tooltip.tutorialmod.magic_block_tooltip.2")); //This will add a second line.
-        //You must add a new line of code for every line in the tooltip.
-        //To add colors or other formatting to the translated text, see the following wiki article:
-        //https://minecraft.wiki/w/Formatting_codes
-        //Use those directly in the lang files of the mod.
+        /*You must add a new line of code for every line in the tooltip.
+        To add colors or other formatting to the translated text, see the following wiki article:
+        https://minecraft.wiki/w/Formatting_codes
+        Use those directly in the lang files of the mod.*/
         super.appendTooltip(stack, context, tooltip, options);
     }
 }
