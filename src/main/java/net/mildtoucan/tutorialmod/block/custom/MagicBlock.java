@@ -21,14 +21,11 @@ import net.minecraft.world.World;
 import java.util.List;
 
 public class MagicBlock extends Block {
-    public MagicBlock(Settings settings) {
-        super(settings);
+    public MagicBlock(Settings settings) {super(settings);
     }
 
     @Override
     protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
-
-
         world.playSound(player, pos, SoundEvents.BLOCK_AMETHYST_BLOCK_CHIME, SoundCategory.BLOCKS, 1f, 1f);
         return ActionResult.SUCCESS;
     }
@@ -46,9 +43,9 @@ public class MagicBlock extends Block {
     }
 
     private boolean isValidItem(ItemStack stack) {
-        return stack.isIn(ModTags.Items.TRANSFORMABLE_ITEMS); /*This Method returns a "true" boolean if
-        the item checked is in the tag. */
+        return stack.isIn(ModTags.Items.TRANSFORMABLE_ITEMS);
     }
+    /*This Method returns a "true" boolean if the item checked is in the tag. */
 
     @Override
     public void appendTooltip(ItemStack stack, Item.TooltipContext context, List<Text> tooltip, TooltipType options) {
