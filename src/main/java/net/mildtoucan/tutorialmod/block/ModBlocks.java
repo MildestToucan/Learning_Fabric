@@ -3,6 +3,7 @@ package net.mildtoucan.tutorialmod.block;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.mildtoucan.tutorialmod.TutorialMod;
 import net.mildtoucan.tutorialmod.block.custom.MagicBlock;
+import net.mildtoucan.tutorialmod.block.custom.PinkGarnetLampBlock;
 import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -113,7 +114,15 @@ public class ModBlocks {
                             .nonOpaque()));
 
     //The .nonOpaque Method is important if you have any see-through elements in a block's texture
-    //Don't forget to add all of these to the ModItemGroups Class
+    //Remember to add all of these to the ModItemGroups Class
+
+    public static final Block PINK_GARNET_LAMP = registerBlock("pink_garnet_lamp", new PinkGarnetLampBlock
+            (AbstractBlock.Settings.create()
+                    .strength(1f)
+                    .requiresTool()
+                    .sounds(BlockSoundGroup.GLASS)
+                    .luminance(state -> state.get(PinkGarnetLampBlock.CLICKED) ? 15 : 0))); //This makes the luminance of the block dependent on the CLICKED BlockState.
+    //If the CLICKED boolean is true, then it'll have 15 luminance, else 0. Think of it as setting conditions for the light level.
 
     private static Block registerBlock(String name, Block block) {
         registerBlocKItem(name, block);

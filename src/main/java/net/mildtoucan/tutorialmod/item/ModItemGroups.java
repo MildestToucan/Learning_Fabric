@@ -53,6 +53,8 @@ public class ModItemGroups {
 
                         entries.add(ModBlocks.PINK_GARNET_DOOR);
                         entries.add(ModBlocks.PINK_GARNET_TRAPDOOR);
+
+                        entries.add(ModBlocks.PINK_GARNET_LAMP);
                     }).build());
 
     public static final ItemGroup PINK_GARNET_TOOLS_GROUP = Registry.register(Registries.ITEM_GROUP,
