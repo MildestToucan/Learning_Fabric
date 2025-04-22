@@ -1,6 +1,7 @@
 package net.mildtoucan.tutorialmod.item.custom;
 
 import net.mildtoucan.tutorialmod.block.ModBlocks;
+import net.mildtoucan.tutorialmod.component.ModDataComponentTypes;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.gui.screen.Screen;
@@ -49,6 +50,12 @@ public class ChiselItem extends Item {
                         item -> context.getPlayer().sendEquipmentBreakStatus(item, EquipmentSlot.MAINHAND));
 
                 world.playSound(null, context.getBlockPos(), SoundEvents.BLOCK_GRINDSTONE_USE, SoundCategory.BLOCKS); //Plays sound after usage
+
+                context.getStack().set(ModDataComponentTypes.COORDINATES, context.getBlockPos());
+                //Saves coordinates of the last place it modified a block at.
+                //You can delete the data with the below line
+                //context.getStack().set(ModDataComponentTypes.COORDINATES, null);
+
             }
         }
 
@@ -63,6 +70,11 @@ public class ChiselItem extends Item {
         } else {
             tooltip.add(Text.translatable("tooltip.tutorialmod.chisel"));
         }
+
+        if(stack.get(ModDataComponentTypes.COORDINATES) != null) {
+            tooltip.add(Text.literal("Last Block Changed at " + stack.get(ModDataComponentTypes.COORDINATES)));
+        }
+        //Adds tooltip corresponding to the stack's COORDINATES value if it has any stored.
 
         super.appendTooltip(stack, context, tooltip, type);
     }
