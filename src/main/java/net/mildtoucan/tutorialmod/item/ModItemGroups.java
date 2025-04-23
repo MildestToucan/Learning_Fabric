@@ -61,9 +61,14 @@ public class ModItemGroups {
             Identifier.of(TutorialMod.MOD_ID, "pink_garnet_tools"),
             FabricItemGroup.builder()
                     .displayName(Text.translatable("itemgroup.tutorialmod.pink_garnet_tools"))
-                    .icon(() -> new ItemStack(ModItems.CHISEL))
+                    .icon(() -> new ItemStack(ModItems.PINK_GARNET_PICKAXE))
                     .entries((displayContext, entries) -> {
                         entries.add(ModItems.CHISEL);
+                        entries.add(ModItems.PINK_GARNET_PICKAXE);
+                        entries.add(ModItems.PINK_GARNET_AXE);
+                        entries.add(ModItems.PINK_GARNET_SHOVEL);
+                        entries.add(ModItems.PINK_GARNET_HOE);
+                        entries.add(ModItems.PINK_GARNET_SWORD);
                     }).build());
 
 

@@ -5,10 +5,12 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.mildtoucan.tutorialmod.TutorialMod;
 import net.mildtoucan.tutorialmod.block.ModBlocks;
 import net.mildtoucan.tutorialmod.item.ModItems;
+import net.minecraft.data.server.recipe.CraftingRecipeJsonBuilder;
 import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
 import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder;
 import net.minecraft.item.ItemConvertible;
+import net.minecraft.item.Items;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.RegistryWrapper;
@@ -65,12 +67,49 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         createDoorRecipe(ModBlocks.PINK_GARNET_DOOR, Ingredient.ofItems(ModItems.PINK_GARNET))
                 .criterion(hasItem(ModItems.PINK_GARNET), conditionsFromItem(ModItems.PINK_GARNET))
                 .offerTo(exporter);
-        //Unsure if this works? The Fabric documentation seems to say it would work(?)
+
+        createSwordRecipe(ModItems.PINK_GARNET_SWORD, Ingredient.ofItems(ModItems.PINK_GARNET))
+                .criterion(hasItem(ModItems.PINK_GARNET), conditionsFromItem(ModItems.PINK_GARNET))
+                .offerTo(exporter);
+
+        createPickaxeRecipe(ModItems.PINK_GARNET_PICKAXE, Ingredient.ofItems(ModItems.PINK_GARNET))
+                .criterion(hasItem(ModItems.PINK_GARNET), conditionsFromItem(ModItems.PINK_GARNET))
+                .offerTo(exporter);
+
+        createAxeLeftRecipe(ModItems.PINK_GARNET_AXE, Ingredient.ofItems(ModItems.PINK_GARNET))
+                .criterion(hasItem(ModItems.PINK_GARNET), conditionsFromItem(ModItems.PINK_GARNET))
+                .offerTo(exporter);
 
 
     }
     //By creating a List of all items that smelt into the same result, we are able to easily add ingredients, and generate
     //just as many smelting recipes! This allows very easy creation and scaling of recipes with the same result.
 
+    public static CraftingRecipeJsonBuilder createSwordRecipe(ItemConvertible output, Ingredient input) {
+        return ShapedRecipeJsonBuilder.create(RecipeCategory.REDSTONE, output, 1)
+                .input('#', input)
+                .input('S', Items.STICK)
+                .pattern(" # ")
+                .pattern(" # ")
+                .pattern(" S ");
+    }
+
+    public static CraftingRecipeJsonBuilder createPickaxeRecipe(ItemConvertible output, Ingredient input) {
+        return ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, output, 1)
+                .input('#', input)
+                .input('S', Items.STICK)
+                .pattern("###")
+                .pattern(" S ")
+                .pattern(" S ");
+    }
+
+    public static CraftingRecipeJsonBuilder createAxeLeftRecipe(ItemConvertible output, Ingredient input) {
+        return ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, output, 1)
+                .input('#', input)
+                .input('S', Items.STICK)
+                .pattern("## ")
+                .pattern("#S ")
+                .pattern(" S ");
+    }
 
 }

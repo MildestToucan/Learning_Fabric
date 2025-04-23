@@ -3,6 +3,7 @@ package net.mildtoucan.tutorialmod.datagen;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.mildtoucan.tutorialmod.block.ModBlocks;
+import net.mildtoucan.tutorialmod.util.ModTags;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
 
@@ -45,5 +46,15 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         getOrCreateTagBuilder(BlockTags.WALLS)
                 .add(ModBlocks.PINK_GARNET_WALL);
         //Adding the blocks to these tags via datagen is important for them to connect with blocks of the same tag.
+
+        getOrCreateTagBuilder(BlockTags.NEEDS_DIAMOND_TOOL)
+                .add(ModBlocks.MAGIC_BLOCK);
+
+        getOrCreateTagBuilder(ModTags.Blocks.NEEDS_PINK_GARNET_TOOL)
+                .addTag(BlockTags.NEEDS_IRON_TOOL);
+
+        //We'll add the tag for incorrect for pink garnet tool manually because datagen here won't let us exclude
+        // a tag's contents from another tag.
+
     }
 }
