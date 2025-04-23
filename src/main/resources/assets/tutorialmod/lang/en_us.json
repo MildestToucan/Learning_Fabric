@@ -34,6 +34,8 @@
   "itemgroup.tutorialmod.pink_garnet_blocks": "Pink Garnet Blocks",
   "itemgroup.tutorialmod.pink_garnet_tools": "Pink Garnet Tools",
 
+
+  "tooltip.tutorialmod.pink_garnet": "Ooo shiny!",
   "tooltip.tutorialmod.magic_block_tooltip": "This block is very, very §9MAGICAL!§r",
   "tooltip.tutorialmod.magic_block_tooltip.2": "It can turn §dRaw Garnet§r into §bDiamonds§r!",
 

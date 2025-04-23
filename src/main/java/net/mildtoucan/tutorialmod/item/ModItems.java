@@ -16,7 +16,13 @@ import java.util.List;
 
 public class ModItems {
 
-    public static final Item PINK_GARNET = registerItem("pink_garnet", new Item(new Item.Settings()));
+    public static final Item PINK_GARNET = registerItem("pink_garnet", new Item(new Item.Settings()){
+        @Override
+        public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
+            tooltip.add(Text.translatable("tooltip.tutorialmod.pink_garnet"));
+            super.appendTooltip(stack, context, tooltip, type);
+        }
+    });
     public static final Item RAW_PINK_GARNET = registerItem("raw_pink_garnet", new Item(new Item.Settings()));
 
     public static final Item CHISEL = registerItem("chisel", new ChiselItem(new Item.Settings().maxDamage(32)));
